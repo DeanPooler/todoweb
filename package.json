@@ -1,0 +1,23 @@
+{
+  "name": "todoweb",
+  "version": "1.0.0",
+  "description": "A simple to-do list webapp",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeanPooler/todoweb.git"
+  },
+  "author": "Dean Pooler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeanPooler/todoweb/issues"
+  },
+  "homepage": "https://github.com/DeanPooler/todoweb#readme",
+  "devDependencies": {
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  }
+}
