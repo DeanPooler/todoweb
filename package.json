@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DeanPooler/todoweb#readme",
   "devDependencies": {
+    "underscore": "^1.13.1",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0"
   }

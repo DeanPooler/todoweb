@@ -1,0 +1,69 @@
+#wrapper {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgb(35,35,35);
+}
+
+#topnav {
+    float: left;
+    width: 100%;
+    height: 5%;
+
+    background-color: rgb(25,25,25);
+}
+
+
+
+#sidebar {
+    float: left;
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid rgb(65,65,65);
+}
+
+#sidebar-menu {
+    float: left;
+    width: 20%;
+    border-right: 1px solid rgb(65,65,65);
+    
+}
+
+#sidebar-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#sidebar-menu li {
+    float: left;
+}
+
+#sidebar-menu li a {
+    
+}
+
+#sidebar-menu li a:hover {
+    
+}
+#project-view {
+
+}
+
+#project-menu {
+
+}
+
+.menu-item {
+    margin-left: 10px;
+    width: 35px;
+    margin: 6px 0;
+}
