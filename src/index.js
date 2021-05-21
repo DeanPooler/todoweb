@@ -1,7 +1,4 @@
-import DOMHelper from './modules/UI/DOMHelper';
-import UI from './modules/UI/UI.js';
-
-let DOMTest = new DOMHelper;
+import UI from "./modules/UI/UI";
 
 UI.topnav();
 UI.sidebarMenu();
