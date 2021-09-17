@@ -51,7 +51,7 @@ export default class DOMHelper {
         };
         const opt = this.setDefaults(options, defaults);
 
-        if (opt.text === "placeholder text") { p.textContent == opt.text; }
+        if (opt.text !== "placeholder text") { p.textContent = opt.text; }
         if (opt.class !== null) { p.setAttribute("class", opt.class); }
         if (opt.id !== null) { p.setAttribute("id", opt.id); }
         this.pFuncLog.push(p);
@@ -112,7 +112,7 @@ export default class DOMHelper {
     h(options) {
         const defaults = {
             parent: this.divFuncLog.last(),
-            size: 1,
+            size: "1",
             text: "placeholder text"
             
         };

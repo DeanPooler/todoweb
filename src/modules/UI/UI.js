@@ -44,4 +44,23 @@ export default class UI {
     static projectView() {
 
     }
+
+    static displayProjectList(array) {
+        let projectDOM = new DOMHelper;
+        // create a container div and append it to sidebar
+        projectDOM.div({id: "project-list-container", parent: "sidebar"});
+        // create an ul and append it to project-list-container
+        projectDOM.ul({id: "project-list", parent: "project-list-container"});
+        // for each element in array
+        array.forEach(e => {
+            // create a li with the name of the element as id and class project-tile
+            projectDOM.li({id: `${e.idFriendlyName}-item`,class: "project-list-item", parent: "project-list"});
+            // create a div with id e.name and append it to project-list
+            projectDOM.div({id: e.idFriendlyName, parent: `${e.idFriendlyName}-item`});
+            // create a p, set textcontent to name of element and append it to previously created div
+            projectDOM.p({text: e.name, parent: e.idFriendlyName});
+        });
+
+            
+    }
 }
