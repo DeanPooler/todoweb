@@ -65,21 +65,55 @@ export default class UI {
 
     }
 
-    static displayProjectList(array) {
-        let projectDOM = new DOMHelper;
+    static displayProjectList(projectArray) {
+        let projectListDOM = new DOMHelper;
         // create a container div and append it to sidebar
-        projectDOM.div({id: "project-list-container", parent: "sidebar"});
+        projectListDOM.div({id: "project-list-container", parent: "sidebar"});
         // create an ul and append it to project-list-container
-        projectDOM.ul({id: "project-list", parent: "project-list-container"});
+        projectListDOM.ul({id: "project-list", parent: "project-list-container"});
         // for each element in array
-        array.forEach(e => {
+        projectArray.forEach(e => {
             // create a li with the name of the element as id and class project-tile
-            projectDOM.li({id: `${e.idFriendlyName}-item`,class: "project-list-item-outer", parent: "project-list"});
+            projectListDOM.li({id: `${e.idFriendlyName}-item`,class: "project-list-item-outer", parent: "project-list"});
             // create a div with id e.name and append it to project-list
-            projectDOM.div({id: e.idFriendlyName, class: "project-list-item-inner", parent: `${e.idFriendlyName}-item`});
+            projectListDOM.div({id: e.idFriendlyName, class: "project-list-item-inner", parent: `${e.idFriendlyName}-item`});
             // create a p, set textcontent to name of element and append it to previously created div
-            projectDOM.p({text: e.name, parent: e.idFriendlyName});
-            projectDOM.div({id: "test", class: "menu-arrow", parent: e.idFriendlyName, html: this.getPrefab("menuArrow")});
+            projectListDOM.p({text: e.name, parent: e.idFriendlyName});
+            projectListDOM.div({id: `${e.idFriendlyName}-menu-arrow`, class: "menu-arrow", parent: e.idFriendlyName, html: this.getPrefab("menuArrow")});
+
+            document.getElementById(`${e.idFriendlyName}-menu-arrow`).addEventListener("touchstart", (e) => {
+                console.log(e);
+            });
         });            
+    }
+
+    static displayProject(project) {
+        let projectDOM = new DOMHelper;
+        projectDOM.div({id: "project-container", parent: "project-view"});
+        
+        let projectView = document.getElementById("project-view");
+        projectView.innerHTML("");
+
+        project.tasks.forEach(task => {
+            createTaskTile(task, "project-view");
+        });
+        
+        function createTaskTile(task, idParentDiv) {
+            let taskTileDOM = new DOMHelper;
+            // create container for task tile
+            taskTileDOM.div({id: `${task.idFriendlyName}-container`, class: "task-tile", parent: idParentDiv});
+            // create container for task title
+            taskTileDOM.div({id: `${task.idFriendlyName}-title`, parent: task.idFriendlyName, class: "task-tile-title", text: task.name});
+            // create container for task description
+            taskTileDOM.div({id: `${task.idFriendlyName}-description`, class: "task-tile-description", text: task.descripton});
+            // create container for task info
+            taskTileDOM.div({id: `${task.idFriendlyName}-info`, class: "task-tile-info"});
+                // add priority, date due, completed
+                taskTileDOM.div({id: `${task.idFriendlyName}-priority`, class: "task-tile-info-priority"});
+                taskTileDOM.div({id: `${task.idFriendlyName}-datedue`, class: "task-tile-info-datedue"});
+                taskTileDOM.div({id: `${task.idFriendlyName}-completed`, class: "task-tile-info-completed"});
+        }
+
+        
     }
 }
