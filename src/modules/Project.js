@@ -1,5 +1,3 @@
-import Task from "./Task";
-
 export default class Project {
     constructor(name, description) {
         this.name = name;
@@ -9,10 +7,17 @@ export default class Project {
     }
 
     addTask(task) {
-        if (task == typeof Task) {
+        if (task.constructor.name == "Task") {
             this.tasks.push(task);
         } else {
             console.log("ERROR: Tried to add task to project that was not of type Task");
         }
+    }
+    
+    displayTasksInfo() {
+        this.tasks.forEach(element => {
+            element.displayInfo();
+            console.log("----------------------------");
+        });
     }
 }
