@@ -126,6 +126,27 @@ export default class DOMHelper {
         document.getElementById(opt.parent).appendChild(h);
     }
 
+    button(options) {
+        const defaults = {
+            parent: this.divFuncLog.last(),
+            class: null,
+            id: null,
+            text: null,
+            html: null,
+        };
+        const opt = this.setDefaults(options, defaults);
+
+        const button = document.createElement("button");
+        
+        if (opt.class !== null ) {button.setAttribute("class", opt.class);}
+        if (opt.id !== null ) {button.setAttribute("id", opt.id);}
+        if (opt.text !== null ) {button.textContent = opt.text;}
+        if (opt.html !== null ) {button.innerHTML = opt.html;}
+        
+        this.divFuncLog.push(button);
+        document.getElementById(opt.parent).appendChild(button);
+    }
+
     svg(options) {
         
         const defaults = {

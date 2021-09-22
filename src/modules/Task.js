@@ -6,7 +6,7 @@ export default class Task {
         this.dateAdded = Date.now();
         this.subtasks = [];
         this.isCompleted = false;
-        this.idFriendlyName = this.name.toLowerCase().replaceAll(/ */ig, "");
+        this.idFriendlyName = this.name.toLowerCase().replaceAll(/\s/ig, "-");
         if (new Date(dateDue.replaceAll(/-/ig, "/")) - this.dateAdded > 0) {
             new Date(dateDue.replaceAll(/-/ig, "/"));
         } else {
