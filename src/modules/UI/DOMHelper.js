@@ -25,7 +25,8 @@ export default class DOMHelper {
             class: null,
             id: null,
             text: null,
-            width: null
+            width: null,
+            html: null,
         };
         const opt = this.setDefaults(options, defaults);
 
@@ -35,6 +36,7 @@ export default class DOMHelper {
         if (opt.class !== null ) {div.setAttribute("class", opt.class);}
         if (opt.id !== null ) {div.setAttribute("id", opt.id);}
         if (opt.text !== null ) {div.textContent = opt.text;}
+        if (opt.html !== null ) {div.innerHTML = opt.html;}
         
         this.divFuncLog.push(div);
         document.getElementById(opt.parent).appendChild(div);
@@ -165,6 +167,12 @@ export default class DOMHelper {
             path("m 25,5 v 40 0 0", `fill:none;stroke:${opt.color};stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none`);
             path("M 45,25 H 5", `fill:none;stroke:${opt.color};stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none`);
         }
+
+        if (opt.prefab !== null && opt.prefab === "menuArrow") {
+            polygon("arrow", "16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596");
+            polygon("arrow-fixed", "16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596");
+            path("M-4.58892184e-16,0.56157424 L-4.58892184e-16,16.1929159 L9.708,8.33860465 L-1.64313008e-15,0.56157424 L-4.58892184e-16,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z");
+        }
         
         document.getElementById(opt.parent).appendChild(svg);
         
@@ -206,6 +214,13 @@ export default class DOMHelper {
             text.setAttributeNS(null, "style", style);
             text.appendChild(tspan);
             svg.append(text);
+        }
+
+        function polygon(polyClass, polyPoints) {
+            const polygon = document.createElementNS("http://www.w3.org/1999/xhtml", "polygon");
+            polygon.setAttribute("class", polyClass);
+            polygon.setAttribute("points", polyPoints);
+            svg.append(polygon);
         }
     }
 }

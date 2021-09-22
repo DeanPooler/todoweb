@@ -1,0 +1,166 @@
+#wrapper {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgb(35,35,35);
+    color: rgb(240,240,240);
+    font-family: monospace;
+    font-size: 18px;
+}
+
+#topnav {
+    float: left;
+    width: 100%;
+    height: 5%;
+
+    background-color: rgb(25,25,25);
+    border-bottom: 3px solid rgb(65,65,65);
+}
+
+
+
+#sidebar {
+    float: left;
+    width: 15%;
+    height: 100%;
+    border-right: 3px solid rgb(65,65,65);
+}
+
+#sidebar-menu {
+    float: left;
+    width: 15%;
+    border-right: 3px solid rgb(65,65,65);
+    
+}
+
+#sidebar-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#sidebar-menu li {
+    margin-left: 10px;
+    float: left;
+}
+
+#sidebar-menu li:hover {
+    background-color: rgb(55,55,55);
+}
+
+#sidebar-menu-settings {
+    float: right;
+}
+
+#project-view {
+
+}
+
+#project-menu {
+
+}
+
+
+.menu-item {
+    margin-left: 10px;
+    width: 35px;
+    margin: 6px 0;
+}
+
+#project-list-container {
+    
+}
+
+#project-list {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.project-list-item {
+    width: 100%;
+    border-style: solid;
+    border-width: 2px;
+    border-image: linear-gradient(to right, rgba(0,0,0,0), rgb(65,65,65)) 1;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.project-list-item div {
+    margin-left: 15px;
+    padding: 10px 0px 10px 10px;
+}
+
+.project-list-item div:hover {
+    background: rgb(50,50,50);
+    background: linear-gradient(to right, rgba(0,0,0,0), rgb(65,65,65) 50%);
+}
+
+.project-list-item p {
+    margin: 0;
+}
+
+.project-tile div:hover {
+}
+
+.menu-arrow div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .menu-arrow div svg {
+    width: 100px;
+    height: auto;
+    margin: 0 2rem;
+    cursor: pointer;
+    overflow: visible;
+  }
+  .menu-arrow div svg polygon, div svg path {
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  }
+  .menu-arrow div svg:hover polygon, div svg:hover path {
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+    fill: #FF4136;
+  }
+  .menu-arrow div svg:hover .arrow {
+    animation: arrow-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+  }
+  .menu-arrow div svg:hover .arrow-fixed {
+    animation: arrow-fixed-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+  }
+  
+  @keyframes arrow-anim {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    5% {
+      transform: translateX(-0.1rem);
+    }
+    100% {
+      transform: translateX(1rem);
+      opacity: 0;
+    }
+  }
+  @keyframes arrow-fixed-anim {
+    5% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

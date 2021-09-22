@@ -1,5 +1,6 @@
 import UI from "./modules/UI/UI";
 import Project from "./modules/Project";
+import "../dist/style/scss/main.scss";
 
 UI.pageLoad();
 
