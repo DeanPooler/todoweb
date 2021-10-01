@@ -1,6 +1,6 @@
 
 $ease: cubic-bezier(.2,1,.3,1);
-@keyframes "arrow-anim" {
+@-webkit-keyframes "arrow-anim" {
     0% {
         opacity: 1;
         transform: translateX(0);
@@ -13,7 +13,7 @@ $ease: cubic-bezier(.2,1,.3,1);
         opacity: 0;
     }
 }
-@keyframes "arrow-fixed-anim" {
+@-webkit-keyframes "arrow-fixed-anim" {
     5% {
         opacity: 0;
     }
@@ -64,8 +64,33 @@ $ease: cubic-bezier(.2,1,.3,1);
 }
 
 .task-tile {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "title title title"
+    "description description description"
+    "priority datedue completed";
 
+    .task-tile-title {
+        grid-area: title;
+        font-size: 15px;
+    }
+    .task-tile-description {
+        grid-area: description;
+        font-size: 10px;
+    }
+    .task-tile-info-priority {
+        grid-area: priority;
+    }
+    .task-tile-info-datedue {
+        grid-area: datedue;
+    }
+    .task-tile-info-completed {
+        grid-area: completed;
+    }
 }
+
 
 #wrapper {
     position:fixed;
@@ -84,29 +109,23 @@ $ease: cubic-bezier(.2,1,.3,1);
     font-size: 16px;
 }
 
-#topnav {
-    float: left;
-    width: 100%;
-    height: 5%;
-    
-    background-color: rgb(25,25,25);
-    border-bottom: 3px solid rgb(65,65,65);
+#container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 5fr;
+    grid-auto-rows: 100%;
 }
 
 
-
 #sidebar {
-    float: left;
-    width: 15%;
     height: 100%;
     border-right: 3px solid rgb(65,65,65);
 }
 
 #sidebar-menu {
-    float: left;
-    width: 15%;
-    border-right: 3px solid rgb(65,65,65);
-    
+    height: 5%;
+    border-bottom: 3px solid rgb(65,65,65);
+    background-color: rgb(25,25,25);
 }
 
 #sidebar-menu ul {
@@ -129,20 +148,31 @@ $ease: cubic-bezier(.2,1,.3,1);
     float: right;
 }
 
-#project-view {
-    float: left;
-    padding: 0;
+#project-list-container {   
+}
 
+#project-view {
+    width: 100%;
+    text-align: center;
+    
 }
 
 #project-container {
-    float: left;
-    width: 100%;
+    display: inline-block;
     margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    padding-top: 5%;
+    
 }
 
 #project-menu {
-    
+    margin-top: 0;
+    display: inline-block;
+    width: 100%;
+    height: 5%;
+    border-bottom: 3px solid rgb(65,65,65);
+    background-color: rgb(25,25,25);
 }
 
 
@@ -152,9 +182,6 @@ $ease: cubic-bezier(.2,1,.3,1);
     margin: 6px 0;
 }
 
-#project-list-container {
-    
-}
 
 #project-list {
     margin: 0;

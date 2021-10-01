@@ -22,23 +22,18 @@ export default class UI {
     }
 
     pageLoad() {
-        this.topnav();
+        let pageDOM = new DOMHelper;
+
+        pageDOM.div({id: "sidebar", parent: "container"});
+        pageDOM.div({id: "project-view", parent: "container"});
         this.sidebarMenu();
         this.projectViewMenu();
-    }
-
-    topnav() {
-        let topnavDOM = new DOMHelper;
-        
-        topnavDOM.div({id: "topnav", parent: "wrapper"});
-        topnavDOM.div({id: "sidebar", parent: "wrapper"});
-        topnavDOM.div({id: "project-view", parent: "wrapper"});
     }
     
     sidebarMenu() {
         let sidebarMenuDOM = new DOMHelper;
         
-        sidebarMenuDOM.div({id: "sidebar-menu", parent: "topnav"});
+        sidebarMenuDOM.div({id: "sidebar-menu", parent: "sidebar"});
         sidebarMenuDOM.ul({parent: "sidebar-menu"});
         sidebarMenuDOM.li({id: "sidebar-menu-home", class: "menu-item"});
         sidebarMenuDOM.div({html: this.getPrefab("home"), parent: "sidebar-menu-home"});
@@ -48,14 +43,10 @@ export default class UI {
         sidebarMenuDOM.div({html: this.getPrefab("settings"), parent: "sidebar-menu-settings"});
     }
 
-    sidebar() {
-
-    }
-
     projectViewMenu() {
         let projectViewMenuDOM = new DOMHelper;
 
-        projectViewMenuDOM.div({id: "project-menu", parent: "topnav"});
+        projectViewMenuDOM.div({id: "project-menu", parent: "project-view"});
         projectViewMenuDOM.div({id: "project-menu-addtask", class: "menu-item", parent: "project-menu"});
         projectViewMenuDOM.div({id: "project-menu-projectname", class: "menu-item", parent: "project-menu"});
         projectViewMenuDOM.div({id: "project-menu-settings", class: "menu-item", parent: "project-menu"});
@@ -68,7 +59,7 @@ export default class UI {
     displayProject(project) {
         let projectDOM = new DOMHelper;
         let projectView = document.getElementById("project-view");
-        while (projectView.firstChild) {
+        while (projectView.firstChild -1) {
             projectView.removeChild(projectView.lastChild);
         }
         
