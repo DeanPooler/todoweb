@@ -125,8 +125,26 @@ $ease: cubic-bezier(.2,1,.3,1);
     background-color: rgb(55,55,55);
 }
 
-#sidebar-menu-settings {
-    float: right;
+#project-menu {
+    float: left;
+    width: 84%;
+    
+}
+
+#project-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#project-menu li {
+    margin-left: 10px;
+    float: left;
+}
+
+#project-menu li:hover {
+    background-color: rgb(55,55,55);
 }
 
 #project-view {

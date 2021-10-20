@@ -24,7 +24,7 @@ export default class UI {
     pageLoad() {
         this.topnav();
         this.sidebarMenu();
-        this.projectViewMenu();
+        this.projectMenu();
     }
 
     topnav() {
@@ -48,17 +48,15 @@ export default class UI {
         sidebarMenuDOM.div({html: this.getPrefab("settings"), parent: "sidebar-menu-settings"});
     }
 
-    sidebar() {
-
-    }
-
-    projectViewMenu() {
-        let projectViewMenuDOM = new DOMHelper;
-
-        projectViewMenuDOM.div({id: "project-menu", parent: "topnav"});
-        projectViewMenuDOM.div({id: "project-menu-addtask", class: "menu-item", parent: "project-menu"});
-        projectViewMenuDOM.div({id: "project-menu-projectname", class: "menu-item", parent: "project-menu"});
-        projectViewMenuDOM.div({id: "project-menu-settings", class: "menu-item", parent: "project-menu"});
+    projectMenu() {
+        let projectMenuDOM = new DOMHelper;
+        
+        projectMenuDOM.div({id: "project-menu", parent: "topnav"});
+        projectMenuDOM.ul({parent: "project-menu"});
+        projectMenuDOM.li({id: "project-menu-addproject", class: "menu-item"});
+        projectMenuDOM.div({html: this.getPrefab("add"), parent: "project-menu-addproject"});
+        projectMenuDOM.li({id: "project-menu-settings", class: "menu-item"});
+        projectMenuDOM.div({html: this.getPrefab("settings"), parent: "project-menu-settings"});
     }
 
     projectView() {
