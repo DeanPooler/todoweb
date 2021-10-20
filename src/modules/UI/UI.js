@@ -1,4 +1,5 @@
 import DOMHelper from "./DOMHelper";
+import datepicker from "js-datepicker";
 
 export default class UI {
     constructor() {
@@ -22,6 +23,7 @@ export default class UI {
     }
 
     pageLoad() {
+        this.createNewProjectModal();
         this.topnav();
         this.sidebarMenu();
         this.projectMenu();
@@ -38,14 +40,29 @@ export default class UI {
     sidebarMenu() {
         let sidebarMenuDOM = new DOMHelper;
         
+        // add DOM elements
         sidebarMenuDOM.div({id: "sidebar-menu", parent: "topnav"});
         sidebarMenuDOM.ul({parent: "sidebar-menu"});
         sidebarMenuDOM.li({id: "sidebar-menu-home", class: "menu-item"});
-        sidebarMenuDOM.div({html: this.getPrefab("home"), parent: "sidebar-menu-home"});
+        sidebarMenuDOM.button({html: this.getPrefab("home"), parent: "sidebar-menu-home", id: "sidebar-menu-home-button"});
         sidebarMenuDOM.li({id: "sidebar-menu-addproject", class: "menu-item"});
-        sidebarMenuDOM.div({html: this.getPrefab("add"), parent: "sidebar-menu-addproject"});
+        sidebarMenuDOM.button({html: this.getPrefab("add"), parent: "sidebar-menu-addproject", id: "sidebar-menu-addproject-button"});
         sidebarMenuDOM.li({id: "sidebar-menu-settings", class: "menu-item"});
-        sidebarMenuDOM.div({html: this.getPrefab("settings"), parent: "sidebar-menu-settings"});
+        sidebarMenuDOM.button({html: this.getPrefab("settings"), parent: "sidebar-menu-settings", id: "sidebar-menu-settings-button"});
+
+        // Add functions for new-project-modal
+        const newProjectModal = document.getElementById("new-project-modal");
+        const addProjectButton = document.getElementById("sidebar-menu-addproject-button");
+
+        addProjectButton.onclick = function() {
+            newProjectModal.style.display = "block";
+        };
+
+        window.onclick = function(e) {
+            if (e.target == newProjectModal) {
+                newProjectModal.style.display = "none";
+            }
+        };
     }
 
     projectMenu() {
@@ -57,10 +74,6 @@ export default class UI {
         projectMenuDOM.div({html: this.getPrefab("add"), parent: "project-menu-addproject"});
         projectMenuDOM.li({id: "project-menu-settings", class: "menu-item"});
         projectMenuDOM.div({html: this.getPrefab("settings"), parent: "project-menu-settings"});
-    }
-
-    projectView() {
-
     }
 
     displayProject(project) {
@@ -115,4 +128,22 @@ export default class UI {
         });           
     }
 
+    createNewProjectModal() {
+        let newProjectModalDOM = new DOMHelper;
+
+        newProjectModalDOM.div({id: "new-project-modal", class: "modal", parent: "wrapper", html: `
+            <div class="modal-content">
+                <form action="/action_page.php">
+                    <label for="name">Project name:</label><br>
+                    <input type="text" id="new-project-name" name="name" value="project name"><br>
+                    <label for="desc">Description:</label><br>
+                    <input type="text" id="new-project-desc" name="desc" value="description"><br><br>
+                    <div id="new-project-datepicker"></div>
+                    <input type="submit" value="Add project">
+                </form> 
+            </div>
+        `});
+         
+        const newProjectDatepicker = datepicker(document.getElementById("new-project-datepicker"));
+    }
 }
